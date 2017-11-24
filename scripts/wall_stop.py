@@ -13,8 +13,6 @@ class WallStop():
 
     def callback(self, messages):
         self.sensor_values = messages
-        print("asdf")
-        print(messages)
 
     def run(self):
         rate = rospy.Rate(10)
