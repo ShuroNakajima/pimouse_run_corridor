@@ -14,10 +14,6 @@ class WallStopTest(unittest.TestCase):
 	self.values=messages
         print(values)
 
-    def test_node_exist(self):
-        nodes=rosnode.get_node_names()
-	self.assertIn('/cmd_vel',nodes,"node does not exist")
-
     def set_and_get(self, lf, ls, rs, rf):
         with open("/dev/rtlightsensor0","w") as f:
             f.write("%d %d %d %d\n" % (rf, rs, ls, lf))
