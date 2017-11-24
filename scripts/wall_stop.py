@@ -16,7 +16,7 @@ class WallStop():
 
     def run(self):
         rate = rospy.Rate(10)
-        data = Twist
+        data = Twist()
 
         while not rospy.is_shutdown():
             data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0

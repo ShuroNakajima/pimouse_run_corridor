@@ -12,9 +12,11 @@ class WallStopTest(unittest.TestCase):
 
         with open("/dev/rtmotor_raw_l0","r") as lf,\
              open("/dev/rtmotor_raw_r0","r") as rf:
+            print("left")
             left = int(lf.readline().rstrip())
-            right = int(rf.readline().rstrip())
+            right = rf.readline()
             print(left)
+            print("right")
             print(right)
 
         return left, right
