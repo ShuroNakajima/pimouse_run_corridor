@@ -13,6 +13,8 @@ class WallStopTest(unittest.TestCase):
     def callback(self,data):
 	self.count+=1
 	self.values=data
+        print(data.left_forward)
+        print(data.left_side)
 
     def test_node_exist(self):
         nodes=rosnode.get_node_names()
