@@ -17,12 +17,12 @@ class WallStop():
     def run(self):
         rate = rospy.Rate(10)
         data = Twist()
-        print("111111111111111111")
+        rospy.loginfo("111111111111111111")
 
         while not rospy.is_shutdown():
             data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
             self.cmd_vel.publish(data)
-            print("aaaaaaaaaaaaaaaa")
+            rospy.loginfo("aaaaaaaaaaaaaaaa")
             rate.sleep()
 
 if __name__=='__main__':
