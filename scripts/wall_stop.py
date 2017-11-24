@@ -31,4 +31,5 @@ if __name__=='__main__':
     rospy.wait_for_service('/morot_off')
     rospy.on_shutdown(rospy.ServiceProxy('/motor_off',Trigger).call)
     rospy.ServiceProxy('/motor_on',Trigger).call()
+    print("0000000000000000000000")
     WallStop().run()
