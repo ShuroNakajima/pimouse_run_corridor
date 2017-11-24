@@ -7,10 +7,10 @@ class WallStopTest(unittest.TestCase):
     def set_and_get(self, lf, ls, rs, rf):
         with open("/dev/rtlightsensor0","w") as f:
             f.write("%d %d %d %d\n" % (rf, rs, ls, lf))
+            pppp = f.readline()
 
-        pppp = f.readline()
         print(pppp)
-        
+
         time.sleep(0.3)
 
         with open("/dev/rtmotor_raw_l0","r") as lf,\
@@ -19,9 +19,6 @@ class WallStopTest(unittest.TestCase):
 #            right = int(rf.readline().rstrip())
             left = 100
             right = 200
-
-        print(left)
-        print(right)
             
         return left, right
 
