@@ -12,7 +12,7 @@ class WallStopTest(unittest.TestCase):
 
     def callback(self,messages):
 	self.values=messages
-        print(values)
+        print(messages)
 
     def set_and_get(self, lf, ls, rs, rf):
         with open("/dev/rtlightsensor0","w") as f:
