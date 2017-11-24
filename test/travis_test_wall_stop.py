@@ -2,6 +2,7 @@
 import unittest, rostest
 import rosnode, rospy
 import time
+from pimouse_ros.msg import LightSensorValues
 
 class WallStopTest(unittest.TestCase):
     def setUp(self):
