@@ -29,7 +29,7 @@ class WallStopTest(unittest.TestCase):
 
         print(pppp)
 
-        time.sleep(0.3)
+        time.sleep(3)
 
         with open("/dev/rtmotor_raw_l0","r") as lf,\
              open("/dev/rtmotor_raw_r0","r") as rf:
