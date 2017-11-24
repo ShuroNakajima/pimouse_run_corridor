@@ -6,17 +6,16 @@ from pimouse_ros.msg import LightSensorValues
 
 class WallStopTest(unittest.TestCase):
     def setUp(self):
-	self.count=0
-	rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
-	self.values=LightSensorValues()
+	rospy.Subscriber('/cmd_vel', Twist, self.callback)
+	self.values=Twist()
 
-    def callback(self,data):
-	self.count+=1
-	self.values=data
+    def callback(self,messages):
+	self.values=messages
+        print(values)
 
     def test_node_exist(self):
         nodes=rosnode.get_node_names()
-	self.assertIn('/lightsensors',nodes,"node does not exist")
+	self.assertIn('/cmd_vel',nodes,"node does not exist")
 
     def set_and_get(self, lf, ls, rs, rf):
         with open("/dev/rtlightsensor0","w") as f:
