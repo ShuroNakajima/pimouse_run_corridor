@@ -13,15 +13,17 @@ class WallStop():
 
     def callback(self, messages):
         self.sensor_values = messages
+        rospy.logerr("ccccccccccccc")
 
     def run(self):
         rate = rospy.Rate(10)
         data = Twist()
+        rospy.logerr("aaaaaaaaaa")
 
         while not rospy.is_shutdown():
             data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
             self.cmd_vel.publish(data)
-            rospy.logerr(data)
+            rospy.logerr("bbbbbbbbbb")
             rate.sleep()
 
 if __name__=='__main__':

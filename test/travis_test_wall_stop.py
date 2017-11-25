@@ -32,6 +32,23 @@ class WallStopTest(unittest.TestCase):
             
         return left, right
 
+    def test_on_off(self):
+        off = rospy.ServiceProxy('/motor_off', Trigger)
+        ret = off()
+        self.assertEqual(ret.success, True, "motor off does not succeeded")
+        self.assertEqual(ret.message, "OFF", "motor off wrong message")
+        with open("/dev/rtmotoren0","r") as f:
+            data = f.readline()
+            self.assertEqual(data, "0\n", "wrong value in rtmotor0 at motor off")
+
+        on = rospy.ServiceProxy('/motor_on', Trigger)
+        ret = on()
+        self.assertEqual(ret.success, True, "motor on does not succeeded")
+        self.assertEqual(ret.message, "ON", "motor on wrong message")
+        with open("/dev/rtmotoren0","r") as f:
+            data = f.readline()
+            self.assertEqual(data,"1\n","wrong value in rtmotor0 at motor on")
+
     def test_node_exist(self):
         nodes = rosnode.get_node_names()
         self.assertIn('/wall_stop', nodes, "node does not exist")
