@@ -32,7 +32,7 @@ class WallTrace():
             else:
                 target = 50
                 error = (target - s.left_side)/50.0
-                data.angular.z = error * 30 * math.pi / 180.0
+                data.angular.z = error * 6 * math.pi / 180.0
             
             self.cmd_vel.publish(data)
             rate.sleep()
