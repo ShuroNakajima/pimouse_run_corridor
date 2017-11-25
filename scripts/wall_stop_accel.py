@@ -9,7 +9,7 @@ class WallStop():
         self.cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
 
         self.sensor_values = LightSensorValues()
-        rospy.Subscriber('/lightsensros', LightSensorValues, self.callback)
+        rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
 
     def callback(self, messages):
         self.sensor_values = messages
