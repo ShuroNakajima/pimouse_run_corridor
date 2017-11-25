@@ -4,19 +4,15 @@ import rosnode, rospy
 import time
 from geometry_msgs.msg import Twist
 from pimouse_ros.msg import LightSensorValues
-from std_srvs.srv import Trigger, TriggerResponse
 
 class WallStopTest(unittest.TestCase):
     def setUp(self):
 	self.values=Twist()        
 	rospy.Subscriber('cmd_vel', Twist, self.callback)        
-#        self.sensor_values = LightSensorValues()
-#        rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
 
     def callback(self,messages):
 	self.values=messages
-#        self.sensor_values = messages
-#        print(messages)
+        print(messages)
 
     def set_and_get(self, lf, ls, rs, rf):
         with open("/dev/rtlightsensor0","w") as f:
@@ -28,27 +24,8 @@ class WallStopTest(unittest.TestCase):
              open("/dev/rtmotor_raw_r0","r") as rf:
             left = int(lf.readline().rstrip())
             right = int(rf.readline().rstrip())
-#            left = 100
-#            right = 200
             
         return left, right
-
-    def test_on_off(self):
-        off = rospy.ServiceProxy('/motor_off', Trigger)
-        ret = off()
-        self.assertEqual(ret.success, True, "motor off does not succeeded")
-        self.assertEqual(ret.message, "OFF", "motor off wrong message")
-        with open("/dev/rtmotoren0","r") as f:
-            data = f.readline()
-            self.assertEqual(data, "0\n", "wrong value in rtmotor0 at motor off")
-
-        on = rospy.ServiceProxy('/motor_on', Trigger)
-        ret = on()
-        self.assertEqual(ret.success, True, "motor on does not succeeded")
-        self.assertEqual(ret.message, "ON", "motor on wrong message")
-        with open("/dev/rtmotoren0","r") as f:
-            data = f.readline()
-            self.assertEqual(data,"1\n","wrong value in rtmotor0 at motor on")
 
     def test_node_exist(self):
         nodes = rosnode.get_node_names()
