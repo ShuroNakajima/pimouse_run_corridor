@@ -28,7 +28,7 @@ class WallAroundTest(unittest.TestCase):
         self.assertTrue( left > right, "too_left logic FAIL")
 
         left, right = self.set_and_get(0, 5, 0, 0) #don't control when far from a wall
-        self.assertTrue( 0 < left == right, "curve wrongly")
+        self.assertTrue( 0 < left and 0 < right, "normal situation logic FAIL")
 
         left, right = self.set_and_get(0, 50, 0, 0) #curve to right
         self.assertTrue( 0 < left == right, "straight logit FAIL")        
