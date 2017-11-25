@@ -33,7 +33,7 @@ if __name__=='__main__':
     rospy.logerr("22222222222222222222")    
     rospy.wait_for_service('/motor_on')
     rospy.logerr("33333333333333333333")    
-    rospy.wait_for_service('/morot_off')
+    rospy.wait_for_service('/motor_off')
     rospy.logerr("44444444444444444444")
     rospy.on_shutdown(rospy.ServiceProxy('/motor_off',Trigger).call)
     rospy.logerr("55555555555555555555")
