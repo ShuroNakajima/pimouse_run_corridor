@@ -31,9 +31,6 @@ class WallAround():
         data.angular.z = 0.0
         
         while not rospy.is_shutdown():
-            s = self.sensor_values
-            data.linear.x += accel
-
             if self.wall_front(self.sensor_values):
                 data.angular.z =  -math.pi
             elif self.too_right(self.sensor_values):
