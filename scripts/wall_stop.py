@@ -16,7 +16,7 @@ class WallStop():
         data = Twist()        
         data.linear.x = 0.2
         self.cmd_vel.publish(data)
-        rospy.logerr("DATA " + data)
+        rospy.logerr(data)
 
     def run(self):
         rate = rospy.Rate(10)
