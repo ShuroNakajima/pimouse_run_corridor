@@ -20,7 +20,7 @@ class WallStopTest(unittest.TestCase):
 
         time.sleep(1)
 
-        with open("/dev/rtmotor_raw_l1","r") as lf,\
+        with open("/dev/rtmotor_raw_l0","r") as lf,\
              open("/dev/rtmotor_raw_r0","r") as rf:
 #            left = int(lf.readline().rstrip())
 #            right = int(rf.readline().rstrip())
