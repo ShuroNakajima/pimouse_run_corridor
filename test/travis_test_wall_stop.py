@@ -34,6 +34,11 @@ class WallStopTest(unittest.TestCase):
             
         return left, right
 
+    def test_node_exist(self):
+        nodes = rosnode.get_node_names()
+        self.assertIn('wall_stop', nodes, "node does not exist")
+
+
     def test_io(self):
         left, right = self.set_and_get(400, 100, 100, 0) #total:600
 #        self.assertTrue(left == 0 and right == 0, "can't stop")
