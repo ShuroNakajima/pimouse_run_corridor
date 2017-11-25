@@ -4,6 +4,7 @@ import rosnode, rospy
 import time
 from geometry_msgs.msg import Twist
 from pimouse_ros.msg import LightSensorValues
+from std_srvs.srv import Trigger, TriggerResponse
 
 class WallStopTest(unittest.TestCase):
     def setUp(self):
