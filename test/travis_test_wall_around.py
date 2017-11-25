@@ -21,17 +21,17 @@ class WallAroundTest(unittest.TestCase):
         left, right = self.set_and_get(400, 0, 0, 0) #wall_front
         self.assertTrue(left > right, "wall_front logic FAIL")
 
-        left, right = self.set_and_get(0, 5, 1000, 0) #side direction is not a trigger of stop
-        self.assertTrue( left == right != 0, "stop wrongly by side sensors")
+        left, right = self.set_and_get(0, 0, 1000, 0) #too_right
+        self.assertTrue( left < right, "too_right logic FAIL")
 
-        left, right = self.set_and_get(0, 10, 0, 0) #curve to left
-        self.assertTrue( left < right, "don't curve to left")
-
-        left, right = self.set_and_get(0, 200, 0, 0) #curve to right
-        self.assertTrue( left > right, "don't curve to right")
+        left, right = self.set_and_get(0, 1000, 0, 0) #too_left
+        self.assertTrue( left > right, "too_left logic FAIL")
 
         left, right = self.set_and_get(0, 5, 0, 0) #don't control when far from a wall
-        self.assertTrue( 0 < left == right, "curve wrongly")        
+        self.assertTrue( 0 < left == right, "curve wrongly")
+
+        left, right = self.set_and_get(0, 50, 0, 0) #curve to right
+        self.assertTrue( 0 < left == right, "straight logit FAIL")        
 
 if __name__=='__main__':
     time.sleep(3)
