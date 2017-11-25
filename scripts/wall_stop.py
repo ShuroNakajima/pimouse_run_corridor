@@ -13,18 +13,15 @@ class WallStop():
 
     def callback(self, messages):
         self.sensor_values = messages
-        data1=Twist()
-        data1.linear.x = 0.2
-        self.cmd_vel.publish(data1)
 
     def run(self):
         rate = rospy.Rate(10)
         data = Twist()
 
-        while not rospy.is_shutdown():
+#        while not rospy.is_shutdown():
+        while True:
             data.linear.x = 0.2 if self.sensor_values.sum_all < 500 else 0.0
             self.cmd_vel.publish(data)
-            print("aaaaaaaaaaaaaaaa")
             rate.sleep()
 
 if __name__=='__main__':
@@ -33,6 +30,4 @@ if __name__=='__main__':
     rospy.wait_for_service('/morot_off')
     rospy.on_shutdown(rospy.ServiceProxy('/motor_off',Trigger).call)
     rospy.ServiceProxy('/motor_on',Trigger).call()
-    rospy.loginfo("0000000000000000000000")
-    print("11111111111111111111111")
     WallStop().run()

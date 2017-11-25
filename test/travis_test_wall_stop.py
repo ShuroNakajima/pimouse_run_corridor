@@ -13,8 +13,8 @@ class WallStopTest(unittest.TestCase):
 #        rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
 
     def callback(self,messages):
-#	self.values=messages
-        self.sensor_values = messages
+	self.values=messages
+#        self.sensor_values = messages
         print(messages)
 
     def set_and_get(self, lf, ls, rs, rf):
