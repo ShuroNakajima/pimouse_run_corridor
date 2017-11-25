@@ -8,7 +8,7 @@ from pimouse_ros.msg import LightSensorValues
 class WallStopTest(unittest.TestCase):
     def setUp(self):
 	self.values=Twist()        
-	rospy.Subscriber("cmd_vel", Twist, self.callback)        
+	rospy.Subscriber('cmd_vel', Twist, self.callback)        
 #        self.sensor_values = LightSensorValues()
 #        rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
 
