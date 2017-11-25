@@ -25,7 +25,7 @@ class WallTrace():
 
             if s.sum_forward >= 50: data.linear.x = 0.0
             elif data.linear.x <= 0.2: data.linear.x = 0.2
-            elif data.linear.x >= 0.8: data.linear.x = 0.8
+            elif data.linear.x >= 0.6: data.linear.x = 0.6
 
             if data.linear.x < 0.2: data.angular.z = 0.0
             elif s.left_side < 10: data.angular.z = 0.0
