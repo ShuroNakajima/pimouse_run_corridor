@@ -18,14 +18,9 @@ class WallStopTest(unittest.TestCase):
         with open("/dev/rtlightsensor0","w") as f:
             f.write("%d %d %d %d\n" % (rf, rs, ls, lf))
 
-        with open("/dev/rtlightsensor0","r") as f1:            
-            pppp = f1.readline()
+        time.sleep(1)
 
-        print(pppp)
-
-        time.sleep(3)
-
-        with open("/dev/rtmotor_raw_l0","r") as lf,\
+        with open("/dev/rtmotor_raw_l1","r") as lf,\
              open("/dev/rtmotor_raw_r0","r") as rf:
 #            left = int(lf.readline().rstrip())
 #            right = int(rf.readline().rstrip())
@@ -37,7 +32,6 @@ class WallStopTest(unittest.TestCase):
     def test_node_exist(self):
         nodes = rosnode.get_node_names()
         self.assertIn('/wall_stop', nodes, "node does not exist")
-
 
     def test_io(self):
         left, right = self.set_and_get(400, 100, 100, 0) #total:600
